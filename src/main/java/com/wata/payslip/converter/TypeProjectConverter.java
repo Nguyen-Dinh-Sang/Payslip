@@ -1,5 +1,8 @@
 package com.wata.payslip.converter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.wata.payslip.model.DTO.TypeProjectDTO;
@@ -21,4 +24,14 @@ public class TypeProjectConverter {
 		dto.setTypeName(entity.getTypeName());
 		return dto;
 	}
+	
+	public ArrayList<TypeProjectDTO> toDTOs(List<TypeProjectEntity> entitys) {
+		ArrayList<TypeProjectDTO> dtos = new ArrayList<TypeProjectDTO>();
+		for (TypeProjectEntity typeProjectEntity : entitys) {
+			TypeProjectDTO dto = new TypeProjectDTO();
+			dto = this.toDTO(typeProjectEntity);
+			dtos.add(dto);
+		}
+		return dtos;
+    }
 }
